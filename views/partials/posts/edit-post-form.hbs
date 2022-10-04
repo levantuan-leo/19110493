@@ -1,0 +1,30 @@
+<div>
+  <h2>Edit Post</h2>
+  <form id="edit-form">
+    <input type="hidden" name="postId" value="{{post.id}}" />
+    <label for="postTitle">Post Title:</label>
+    <input
+      type="text"
+      id="postTitle"
+      name="postTitle"
+      placeholder="What's on your mind?"
+      value="{{post.title}}"
+      required
+    />
+    <label for="postContent">Content:</label>
+    <textarea
+      id="postContent"
+      name="postContent"
+      rows="10"
+      required
+    >{{post.content}}</textarea>
+    <div style="display: flex;">
+      <button class="muted-button" style="margin-right: 5px;">
+        <a href="/post/{{post.id}}">cancel</a>
+      </button>
+      <button type="submit">
+        Save Post
+      </button>
+    </div>
+  </form>
+</div>

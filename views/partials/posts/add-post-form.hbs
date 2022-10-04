@@ -1,0 +1,33 @@
+<section class="add-section">
+  <div class="post-title">
+    <h2>Add a New Post</h2>
+    <button class="button add"><span>+</span></button>
+  </div>
+  <form id="add-form">
+    <label htmlFor="postTitle">Post Title:</label>
+    <input
+      type="text"
+      id="postTitle"
+      name="postTitle"
+      placeholder="What's on your mind?"
+      value=""
+      required
+    />
+    <label for="postAuthor">Author:</label>
+    <select id="postAuthor" value="">
+      <option value=""></option>
+    </select>
+    <label for="postContent">Content:</label>
+    <textarea id="postContent" name="postContent" value="" required></textarea>
+    <div style="display: 'flex';alignItems: 'center'">
+      <button type="submit">
+        Save Post
+      </button>
+    </div>
+  </form>
+</section>
+
+<script>
+  document.querySelector(".button.add").onclick = () => {
+  document.querySelector(".add-section").classList.toggle("open"); };
+</script>

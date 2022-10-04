@@ -1,0 +1,7 @@
+{{> posts/add-post-form}}
+<section class="posts-list">
+  <h2>Posts</h2>
+  {{#each posts}}
+    {{> posts/post-list post=this}}
+  {{/each}}
+</section>

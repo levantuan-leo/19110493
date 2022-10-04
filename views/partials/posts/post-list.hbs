@@ -1,0 +1,14 @@
+<article class="post-excerpt post-{{post.id}}">
+  <h3>{{post.title}}</h3>
+  <div>
+    {{> posts/post-author}} |
+    {{> posts/time-ago timestamp=post.date}}
+  </div>
+  <p class="post-content">{{getShortContent post.content}}</p>
+
+  {{> posts/reaction-buttons postId=post.id}}
+  <a href="/post/{{post.id}}" class="button muted-button">
+    View Post
+  </a>
+   <button class="button delete" onclick="deletePost('{{post.id}}')"><span>-</span></button>
+</article>

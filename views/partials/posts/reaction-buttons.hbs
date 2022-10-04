@@ -1,0 +1,11 @@
+<div>
+  {{#each (getReactions postId)}}
+    <button
+      type="button"
+      class="muted-button reaction-button reaction-{{this.reactionName}}"
+      onclick="act('{{this.postId}}','{{this.reactionName}}')"
+    >
+      {{this.emoji}}<span>{{this.reactionCount}}</span>
+    </button>
+  {{/each}}
+</div>

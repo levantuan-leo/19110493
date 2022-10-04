@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>BLOGS{{#if title}} | {{title}}{{/if}}</title>
+    <link type="text/css" rel="stylesheet" href="/css/primitiveui.css" />
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    {{> spinner}}
+    <div>
+      {{> header}}
+      <div class="App">
+        {{{body}}}
+      </div>
+    </div>
+
+    <script src="/js/loader.js" type="text/javascript"></script>
+    <script src="/js/form.js" type="text/javascript"></script>
+    <script src="/js/script.js" type="text/javascript"></script>
+  </body>
+</html>

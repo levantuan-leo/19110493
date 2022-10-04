@@ -1,0 +1,18 @@
+<div class="post-comments">
+  <div class="comments-title">Comments</div>
+  <ul class="comments-ul">
+    {{#each (getComments commentList)}}
+      <li class="comments-li">
+        {{this.text}}
+        <div class="comments-li__time-ago">
+            {{> posts/time-ago timestamp=this.date}}
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+  <form id="comment-form" class="comments-input">
+    <input type="hidden" name="postId" value="{{postId}}" />
+    <input type="text" name="postComment" placeholder="Leave a comment..." />
+    <button type="submit" class="emoji-button muted-button">>></button>
+  </form>
+</div>
