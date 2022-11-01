@@ -12,10 +12,11 @@ function getRequest(req, res) {
     return;
   }
 
-  res.render("post", {
-    post: article,
-    title: "Post",
-  });
+  // res.render("post", {
+  //   post: article,
+  //   title: "Post",
+  // });
+  return res.status(200);
 }
 
 function getEditRequest(req, res) {
@@ -56,7 +57,10 @@ function addRequest(req, res) {
 
   post.unshift(p);
   reaction.unshift(r);
-  res.status(200).json(p);
+  res.status(200).json({
+    ...p,
+    reactions: r
+  });
 }
 
 function editRequest(req, res) {
@@ -71,7 +75,11 @@ function editRequest(req, res) {
   p.date = new Date().toISOString();
   p.content = content;
 
-  res.status(200).json(p);
+  res.status(200).json({
+    ...p,
+    reactions: reaction.find(r => r.id === p.reactions),
+    comments: comment.filter(c => p.comments?.includes(c.id))
+  });
 }
 
 function deleteRequest(req, res) {
@@ -81,14 +89,18 @@ function deleteRequest(req, res) {
   }
 
   const { postId } = req.body;
-  post.splice(post.indexOf(post.find((p) => p.id === postId)), 1);
-  reaction.splice(
-    reaction.indexOf(reaction.find((r) => r.postId === postId)),
-    1
-  );
-  comment.splice(comment.indexOf(comment.find((c) => c.postId === postId)), 1);
-
-  res.status(200).json(postId);
+  const index = post.indexOf(post.find((p) => p.id === postId))
+  if(index > -1) {
+    post.splice(index, 1);
+    reaction.splice(
+      reaction.indexOf(reaction.find((r) => r.postId === postId)),
+      1
+    );
+    _.remove(comment, (c) => c.postId === postId);
+    
+    res.status(200).json(postId);
+  }
+  else return res.status(403).json("Already Deleted!");
 }
 
 module.exports = {
