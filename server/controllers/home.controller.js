@@ -8,7 +8,6 @@ function homeRequest(_, res) {
   //   title: "Home",
   // });
   // ------------------
-  console.log(post, comment, reaction)
   res.status(200).json(post?.map(p => ({
     ...p,
     reactions: reaction.find(r => r.id === p.reactions),

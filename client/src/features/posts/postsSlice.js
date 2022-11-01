@@ -52,11 +52,8 @@ export const deletePost = createAsyncThunk(
 export const commentPost = createAsyncThunk(
   'posts/commentPost',
   async (initialPost, { getState }) => {
-    console.log(initialPost);
-
     const response = await client.post('/comment', initialPost)
     const { postId } = response.data
-    console.log(getState())
     const data = getState().posts.entities[postId];
 
     return {
